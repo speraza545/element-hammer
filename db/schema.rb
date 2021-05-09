@@ -20,24 +20,20 @@ ActiveRecord::Schema.define(version: 2021_05_08_200122) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_factions", force: :cascade do |t|
+    t.text "username"
+    t.integer "user_id"
+    t.integer "faction_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.string "username"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users_factions", force: :cascade do |t|
-    t.integer "users_id"
-    t.integer "factions_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["factions_id"], name: "index_users_factions_on_factions_id"
-    t.index ["users_id"], name: "index_users_factions_on_users_id"
-  end
-
-  add_foreign_key "users_factions", "factions", column: "factions_id"
-  add_foreign_key "users_factions", "users", column: "users_id"
 end

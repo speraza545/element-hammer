@@ -11,9 +11,10 @@ class UsersController < ApplicationController
         @user = User.new
     end 
 
-    def create 
-        user = User.new(params[:user_params])
+    def create
+        user = User.new(user_params)
         if user.save
+            session[:user_id] = user.id
             redirect_to user_path(user)
         else 
             redirect_to user_new_path
@@ -26,12 +27,17 @@ class UsersController < ApplicationController
 
     def update 
         user = User.find(params[:id])
-        user.update(params[:user_params])
+        user.update(user_params)
         redirect_to user_path(user)
     end
 
     def destroy
-        faction = Faction.find(params[:id])
-        faction.destroy
+        user = User.find(params[:id])
+        user.destroy
+    end
+
+    private
+    def user_params
+        params.require(:user).permit(:name, :username, :email, :password)
     end
 end

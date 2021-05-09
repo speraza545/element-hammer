@@ -1,1 +1,12 @@
 <h1>show</h1>
+<%= @user.name %>
+<%= @user.email %>
+<% if @user.factions === [] %>
+    <p>empty</p>
+<% else %>
+    <%= @user.factions.each do |faction| %>
+        <div>
+            <%= faction.name %>
+        </div>
+    <% end %>
+<% end %>

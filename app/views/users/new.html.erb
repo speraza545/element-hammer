@@ -1,1 +1,10 @@
 <h1>new</h1>
+<%= form_for @user do |f|%>
+    <%= f.text_field :name, placeholder: "Name", class: "form_field" %>
+
+    <%= f.text_field :email, placeholder: "Email", class: "form_field" %>
+
+    <%= f.text_field :password, placeholder: "Password", class: "form_field" %>
+
+    <%= f.submit class: "btn btn-primary" %>
+<% end %>
