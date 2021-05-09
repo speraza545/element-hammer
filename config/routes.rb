@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :factions
   resources :user_factions
-
+  get '/login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  get "/signup", to: 'users#new'
 end
