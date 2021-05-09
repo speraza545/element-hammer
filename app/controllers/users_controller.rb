@@ -3,24 +3,29 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end 
 
-    def login 
-    end
-
-    def index 
-        @users = User.all
-    end 
-
     def new 
         @user = User.new
     end 
 
     def create
-        user = User.new(user_params)
-        if user.save
-            session[:user_id] = user.id
-            redirect_to user_path(user)
+        if user_params[:code] != ""
+            if User.is_admin?(user_params[:code])
+                user = User.new(user_params)
+                if user.save
+                    session[:user_id] = user.id
+                    redirect_to admin_user_path(user)
+                end
+            else 
+                redirect_to new_admin_user_path
+            end
         else 
-            redirect_to user_new_path
+            user = User.new(user_params)
+            if user.save
+                session[:user_id] = user.id
+                redirect_to user_path(user)
+            else 
+                redirect_to user_new_path
+            end
         end
     end
 
@@ -41,6 +46,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:name, :email, :password)
+        params.require(:user).permit(:name, :email, :password, :code)
     end
 end

@@ -7,4 +7,13 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get "/signup", to: 'users#new'
+
+  namespace :admin do
+    resources :users
+    resources :factions
+    resources :user_factions
+    get '/login' => 'sessions#new'
+    post 'login' => 'sessions#create'
+    get "/signup", to: 'users#new'
+  end
 end

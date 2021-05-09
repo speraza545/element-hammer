@@ -2,7 +2,7 @@
 <%= @user.name %>
 <%= @user.email %>
 <% if @user.factions === [] %>
-    <p>empty</p>
+    <%= link_to "Create New Army", factions_path %>
 <% else %>
     <%= @user.factions.each do |faction| %>
         <div>

@@ -4,10 +4,13 @@
         <p>stuffs here i swear</p>
     <div>
     <%= @factions.each do |faction|%>
-        <div class = "sub_wrapper">
+        <div class = "faction_wrapper">
             faction.name 
             <div class="image">
                 <p>im an image</p>
+            </div>
+            <div class = "button">
+                <%= link_to "Info", faction_path(faction.id)%>
             </div>
         </div>
     <%end%>

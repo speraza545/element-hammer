@@ -1,4 +1,4 @@
-class FactionsController < ApplicationController
+class Admin::FactionsController < ApplicationController
     def show
         @faction = Faction.find(params[:id])
     end 
@@ -30,4 +30,8 @@ class FactionsController < ApplicationController
         redirect_to faction_path(faction)
     end
 
+    def destroy
+        faction = Faction.find(params[:id])
+        faction.destroy
+    end
 end

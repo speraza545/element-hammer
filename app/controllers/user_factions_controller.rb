@@ -1,37 +1,37 @@
 class UserFactionsController < ActiveRecord::Base
     def show
-        @faction = Faction.find(params[:id])
+        @user_faction = UserFaction.find(params[:id])
     end 
 
     def index 
-        @factions = Factions.all
+        @user_factions = UserFaction.all
     end 
 
     def new 
-        @faction = Faction.new
+        @user_faction = UserFaction.new
     end 
 
     def create 
-        faction = Faction.new(params[:faction_params])
-        if faction.save
-            redirect_to faction_path(faction)
+        user_faction = UserFaction.new(params[:user_faction_params])
+        if user_faction.save
+            redirect_to user_faction_path(user_faction)
         else 
-            redirect_to faction_new_path
+            redirect_to user_faction_new_path
         end
     end
 
     def edit 
-        @faction = Faction.find(params[:id])
+        @user_faction = UserFaction.find(params[:id])
     end 
 
     def update 
-        faction = Faction.find(params[:id])
-        faction.update(params[:faction_params])
-        redirect_to faction_path(faction)
+        fuser_faction = UserFaction.find(params[:id])
+        fuser_faction.update(params[:user_faction_params])
+        redirect_to user_faction_path(user_faction)
     end
 
     def destroy
-        faction = Faction.find(params[:id])
-        faction.destroy
+        user_faction = Faction.find(params[:id])
+        user_faction.destroy
     end
 end
