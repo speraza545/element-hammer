@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_05_08_200122) do
     t.string "name"
     t.string "buff_type"
     t.integer "buff"
+    t.string "info"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

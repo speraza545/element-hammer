@@ -4,6 +4,7 @@ class CreateFactions < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :buff_type
       t.integer :buff 
+      t.string :info
       t.timestamps
     end
   end

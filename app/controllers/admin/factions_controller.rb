@@ -9,15 +9,6 @@ class Admin::FactionsController < ApplicationController
 
     def new 
         @faction = Faction.new
-    end 
-
-    def create 
-        faction = Faction.new(params[:faction_params])
-        if faction.save
-            redirect_to faction_path(faction)
-        else 
-            redirect_to faction_new_path
-        end
     end
 
     def edit 

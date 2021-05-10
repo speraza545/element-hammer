@@ -1,1 +1,13 @@
 <h1>admin faction new</h1>
+<%= flash[:save_issue] %>
+<%= form_for @faction do |f|%>
+    <%= f.text_field :name, placeholder: "Name", class: "form_field" %>
+
+    <%= f.text_field :buff_type, placeholder: "Buff type", class: "form_field" %>
+
+    <%= f.number_field :buff, placeholder: "Buff", class: "form_field" %>
+
+    <%= f.text_area :info, placeholder: "Info", class: "form_field" %>
+
+    <%= f.submit class: "btn btn-primary" %>
+<% end %>

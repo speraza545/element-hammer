@@ -5,7 +5,7 @@
     <div>
     <%= @factions.each do |faction|%>
         <div class = "faction_wrapper">
-            faction.name 
+            <%= faction.name %>
             <div class="image">
                 <p>im an image</p>
             </div>
@@ -13,6 +13,6 @@
                 <%= link_to "Info", faction_path(faction.id)%>
             </div>
         </div>
-    <%end%>
+    <% end %>
 
 </div>

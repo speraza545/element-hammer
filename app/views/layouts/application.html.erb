@@ -6,11 +6,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <ul class="navbar">
+      <% if logged_in? %>
+        <li class="navbar-li"><a href="/">Home</a></li>
+        <li class="navbar-li"><a href="/users/<%= current_user.id %>">Armies</a></li>
+        <li class="navbar-li"><a href="/logout">Logout</a></li>
+      <% else %>
+        <li class="navbar-li"><a href="/">Home</a></li>           
+        <li class="navbar-li"><a href="/login">Login</a></li>
+        <li class="navbar-li"><a href="/signup">Sign up</a></li>
+      <% end %>
+    </ul>
+
+
     <%= yield %>
   </body>
 </html>

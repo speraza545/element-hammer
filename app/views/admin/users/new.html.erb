@@ -1,5 +1,7 @@
 <h1>admin new</h1>
 <h1>Sign up</h1>
+<%= email_taken_output %>
+<%= not_admin_output %>
 <%= form_for @user do |f|%>
     <%= f.text_field :name, placeholder: "Name", class: "form_field" %>
 
