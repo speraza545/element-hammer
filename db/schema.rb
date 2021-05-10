@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_05_08_200122) do
   end
 
   create_table "user_factions", force: :cascade do |t|
-    t.text "username"
+    t.text "army_name"
     t.integer "user_id"
     t.integer "faction_id"
     t.datetime "created_at", precision: 6, null: false

@@ -15,16 +15,16 @@ class UsersController < ApplicationController
                 email_taken
                 redirect_to admin_signup_path
             else
-                if admin?(user_params[:code])
-                    user = User.new(user_params)
-                    if user.save
-                        session[:user_id] = user.id
-                        session[:code] = user.code
+                user = User.new(user_params)
+                if user.save
+                    session[:user_id] = user.id
+                    session[:code] = user.code
+                    if admin?
                         redirect_to admin_factions_path
+                    else
+                        not_admin
+                        redirect_to admin_signup_path
                     end
-                else
-                    not_admin
-                    redirect_to admin_signup_path
                 end
             end
         else 

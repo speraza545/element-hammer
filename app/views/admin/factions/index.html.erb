@@ -1,1 +1,19 @@
 <h1>admin faction index</h1>
+<%= link_to "Create Faction", new_admin_faction_path %>
+<div class = "wrapper">
+    <div class = "main_content">
+        <p>stuffs here i swear</p>
+    <div>
+    <%= @factions.each do |faction|%>
+        <div class = "faction_wrapper">
+            <%= faction.name %>
+            <div class="image">
+                <p>im an image</p>
+            </div>
+            <div class = "button">
+                <%= link_to "Info", admin_faction_path(faction.id)%>
+            </div>
+        </div>
+    <% end %>
+
+</div>

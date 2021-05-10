@@ -10,7 +10,12 @@
 
   <body>
     <ul class="navbar">
-      <% if logged_in? %>
+      <% if admin? %>
+        <li class="navbar-li"><a href="/">Home</a></li>
+        <li class="navbar-li"><a href="/admin/factions">Factions</a></li>
+        <li class="navbar-li"><a href="/admin/users">Users</a></li>
+        <li class="navbar-li"><a href="/logout">Logout</a></li>
+      <% elsif logged_in? %>
         <li class="navbar-li"><a href="/">Home</a></li>
         <li class="navbar-li"><a href="/users/<%= current_user.id %>">Armies</a></li>
         <li class="navbar-li"><a href="/logout">Logout</a></li>

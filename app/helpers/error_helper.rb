@@ -22,4 +22,12 @@ module ErrorHelper
     def save_issue_output
         flash[:save_issue]
     end
+
+    def not_logged_in
+        flash[:not_logged_in] = "Please Log in"
+    end
+
+    def not_logged_in_output
+        flash[:not_logged_in]
+    end
 end

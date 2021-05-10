@@ -1,6 +1,7 @@
 <h1>admin faction new</h1>
-<%= flash[:save_issue] %>
-<%= form_for @faction do |f|%>
+<%= not_admin_output %>
+<%= save_issue_output %>
+<%= form_for [:admin, @faction] do |f|%>
     <%= f.text_field :name, placeholder: "Name", class: "form_field" %>
 
     <%= f.text_field :buff_type, placeholder: "Buff type", class: "form_field" %>
