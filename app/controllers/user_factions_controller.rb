@@ -7,7 +7,7 @@ class UserFactionsController < ActiveRecord::Base
         @user_factions = UserFaction.all
     end 
 
-    def new 
+    def new
         @user_faction = UserFaction.new
     end 
 
