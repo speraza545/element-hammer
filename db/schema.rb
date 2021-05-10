@@ -12,19 +12,19 @@
 
 ActiveRecord::Schema.define(version: 2021_05_08_200122) do
 
+  create_table "armies", force: :cascade do |t|
+    t.text "army_name"
+    t.integer "user_id"
+    t.integer "faction_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "factions", force: :cascade do |t|
     t.string "name"
     t.string "buff_type"
     t.integer "buff"
     t.string "info"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "user_factions", force: :cascade do |t|
-    t.text "army_name"
-    t.integer "user_id"
-    t.integer "faction_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

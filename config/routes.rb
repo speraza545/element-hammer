@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'application#home'
   resources :users, only: [:show, :create, :edit, :update, :destroy]
   resources :factions, only: [:show, :index]
-  resources :user_factions
+  resources :armies
   get '/login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get "/signup", to: 'users#new'

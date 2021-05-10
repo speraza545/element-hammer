@@ -1,4 +1,4 @@
-class UserFactionsController < ActiveRecord::Base
+class ArmiesController < ActiveRecord::Base
     def show
         @user_faction = UserFaction.find(params[:id])
     end 

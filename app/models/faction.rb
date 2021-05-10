@@ -1,4 +1,4 @@
 class Faction < ActiveRecord::Base 
-has_many :user_factions
-has_many :users, through: :user_factions
+has_many :armies
+has_many :users, through: :armies
 end
