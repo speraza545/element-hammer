@@ -7,8 +7,9 @@ class SessionsController < ApplicationController
         user = User.find_by_email(params[:session][:email])
         if user && user.authenticate(params[:session][:password])
             session[:user_id] = user.id
+            session[:code] = user.code if user.code
             if admin?
-                redirect_to admin_user_path(user.id)
+                redirect_to admin_factions_path
             else
                 redirect_to user_path(user.id)
             end

@@ -1,8 +1,9 @@
 <h1>new</h1>
+<%= save_issue_output %>
 <%= form_for @user_faction do |f| %>
-    <%= f.text_field :name, placeholder: "Name", class: "form_field" %>
-
     <%= f.text_field :army_name, placeholder: "Army Name", class: "form_field" %>
+
+    <%= f.select :faction_id, @factions%>
 
     <%= f.submit class: "btn btn-primary" %>
 <% end %>

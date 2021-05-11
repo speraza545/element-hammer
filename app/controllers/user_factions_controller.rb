@@ -1,4 +1,4 @@
-class UserFactionsController < ActiveRecord::Base
+class UserFactionsController < ApplicationController
     def show
         @user_faction = UserFaction.find(params[:id])
     end 
@@ -9,14 +9,17 @@ class UserFactionsController < ActiveRecord::Base
 
     def new
         @user_faction = UserFaction.new
+        @factions = Faction.all.map { |x| x.name}
     end 
 
-    def create 
-        user_faction = UserFaction.new(params[:user_faction_params])
+    def create
+        user_faction = UserFaction.new(army_name: params[:user_faction][:army_name], user_id: session[:user_id], faction_id: UserFaction.convert_name_to_id(params[:user_faction][:faction_id]))
+
         if user_faction.save
             redirect_to user_faction_path(user_faction)
         else 
-            redirect_to user_faction_new_path
+            save_issue
+            redirect_to new_user_faction_path
         end
     end
 

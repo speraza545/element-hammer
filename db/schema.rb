@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(version: 2021_05_08_200122) do
   end
 
   create_table "user_factions", force: :cascade do |t|
-    t.text "army_name"
-    t.integer "user_id"
-    t.integer "faction_id"
+    t.string "army_name"
+    t.integer "user_id", null: false
+    t.integer "faction_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["faction_id"], name: "index_user_factions_on_faction_id"
+    t.index ["user_id"], name: "index_user_factions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,4 +40,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_200122) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "user_factions", "factions"
+  add_foreign_key "user_factions", "users"
 end
