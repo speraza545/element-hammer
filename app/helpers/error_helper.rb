@@ -7,6 +7,14 @@ module ErrorHelper
         flash[:email_taken]
     end
 
+    def army_name_taken
+        flash[:army_name_taken] = "Army Name Taken"
+    end
+
+    def army_name_taken_output
+        flash[:army_name_taken]
+    end
+
     def not_admin
         flash[:not_admin] = "Please Create an Admin Account"
     end

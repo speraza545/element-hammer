@@ -1,1 +1,9 @@
-<h1>index</h1>
+<h1>user faction index</h1>
+<%= @user_factions.each do |army| %>
+    <div>
+        army name: <%= army.army_name %></br>
+        faction name:<%= army.faction.name %></br>
+        user:<%= army.user.name %></br>
+    </div>
+    </br>
+<% end %>

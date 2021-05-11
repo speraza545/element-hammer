@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
     def show
-        if (logged_in? && current_user.id === session[:user_id]) || admin?
+    
+        if logged_in? && current_user.id === User.find(params[:id]).id || admin?
             @user = User.find(params[:id])
+        else
+            redirect_to login_path
         end
     end 
 
@@ -45,16 +48,19 @@ class UsersController < ApplicationController
     end
 
     def edit
-        if (logged_in? && current_user.id === session[:user_id]) || admin?
+        if (logged_in? && current_user.id === User.find(params[:id]).id) || admin?
             @user = User.find(params[:id])
         end
     end 
 
     def update
-        if (logged_in? && current_user.id === session[:user_id]) || admin?
+        if logged_in? && current_user.id === User.find(params[:id]).id || admin?
             user = User.find(params[:id])
             user.update(user_params)
             redirect_to user_path(user)
+
+        else
+            redirect_to login_path
         end
     end
 

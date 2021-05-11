@@ -1,6 +1,11 @@
 class Admin::UsersController < ApplicationController
     def show
-        @user = User.find(params[:id])
+        if logged_in? && current_user.id === User.find(params[:id]).id || admin? 
+            @user = User.find(params[:id])
+        else
+            not_admin
+            redirect_to admin_signup_path
+        end
     end 
 
     def new 
@@ -8,18 +13,33 @@ class Admin::UsersController < ApplicationController
     end 
 
     def edit 
-        @user = User.find(params[:id])
+        if logged_in? && current_user.id === User.find(params[:id]).id || admin?
+            @user = User.find(params[:id])
+        else
+            not_admin
+            redirect_to admin_signup_path
+        end
     end 
 
-    def update 
-        user = User.find(params[:id])
-        user.update(user_params)
-        redirect_to user_path(user)
+    def update
+        if logged_in? && current_user.id === User.find(params[:id]).id || admin?
+            user = User.find(params[:id])
+            user.update(user_params)
+            redirect_to user_path(user)
+        else
+            not_admin
+            redirect_to admin_signup_path
+        end
     end
 
     def destroy
-        user = User.find(params[:id])
-        user.destroy
+        if logged_in? && current_user.id === User.find(params[:id]).id || admin?
+            user = User.find(params[:id])
+            user.destroy
+        else
+            not_admin
+            redirect_to admin_signup_path
+        end
     end
 
 private
