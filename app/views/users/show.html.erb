@@ -2,9 +2,9 @@
 
 <%= @user.name %>
 <%= @user.email %>
-    <%= @user.factions.each do |faction| %>
-        <div>
-            <%= faction.name %>
-
+    <%= @user.user_factions.each do |army| %>
+        <div class = "army_wrapper">
+            <%= army.faction.name %></br>
+            <%= army.army_name %></br>
         </div>
     <% end %>

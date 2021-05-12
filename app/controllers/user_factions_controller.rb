@@ -9,7 +9,7 @@ class UserFactionsController < ApplicationController
 
     def index
         if logged_in? 
-            @user_factions = UserFaction.where(user_id: current_user.id) ||""
+            @user_factions = UserFaction.where(user_id: current_user.id).order_by_army_name ||""
         else
             not_logged_in
             redirect_to login_path

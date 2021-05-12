@@ -1,6 +1,7 @@
 <h1>new</h1>
 <%= save_issue_output %>
 <%= army_name_taken_output %>
+<%= error_with_omniauth_output %>
 <%= form_for @user_faction do |f| %>
     <%= f.text_field :army_name, placeholder: "Army Name", class: "form_field", :required => true %>
 

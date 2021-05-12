@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'application#home'
+
+  get '/auth/:provider/callback' => 'sessions#omniauth'
+
   resources :users, only: [:show, :create, :edit, :update, :destroy]
   resources :factions, only: [:show, :index]
   resources :user_factions
@@ -10,7 +13,7 @@ Rails.application.routes.draw do
   get "/logout", to: 'sessions#destroy'
 
   namespace :admin do
-    resources :users, only: [:show, :create, :edit, :update, :destroy]
+    resources :users, only: [:show, :create, :edit, :update, :destroy, :index]
     resources :factions
     resources :user_factions
     get '/login' => 'sessions#new'

@@ -10,3 +10,4 @@
     <%= f.password_field :password, :placeholder => "Password", :required => true %>
     <%= f.submit "Log in", class: "btn-submit" %>
 <% end %>
+<%= button_to "Log in with Google", "/auth/google_oauth2" %>

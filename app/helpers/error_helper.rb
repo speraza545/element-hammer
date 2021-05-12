@@ -38,4 +38,12 @@ module ErrorHelper
     def not_logged_in_output
         flash[:not_logged_in]
     end
+
+    def error_with_omniauth
+        flash[:error_with_omniauth_output] = "Error With Omniauth, Please Try Again"
+    end 
+
+    def error_with_omniauth_output
+        flash[:error_with_omniauth_output]
+    end
 end
