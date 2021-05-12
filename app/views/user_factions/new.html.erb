@@ -2,10 +2,10 @@
 <%= save_issue_output %>
 <%= army_name_taken_output %>
 <%= error_with_omniauth_output %>
-<%= form_for @user_faction do |f| %>
+<%= form_for @user_user_faction, :url => user_user_factions_path do |f| %>
     <%= f.text_field :army_name, placeholder: "Army Name", class: "form_field", :required => true %>
 
-    <%= f.select :faction_id, @factions, :required => true%>
+    <%= f.select :faction_id, @user_factions, :required => true%>
 
     <%= f.submit class: "btn btn-primary" %>
 <% end %>

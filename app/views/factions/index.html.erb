@@ -13,7 +13,7 @@
                 <%= link_to "Info", faction_path(faction.id) %>
             </div>
             <div class = "button">
-            <%= link_to "Build", new_user_faction_path %>
+            <%= link_to "Build", new_user_user_faction_path(session[:user_id]) %>
             </div>
         </div>
     <% end %>

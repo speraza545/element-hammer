@@ -3,7 +3,7 @@ class UserFactionsController < ApplicationController
         if logged_in? && current_user.id === UserFaction.find(params[:id]).user_id || admin?
             @user_faction = UserFaction.find(params[:id])
         else 
-            redirect_to login_user_path
+            redirect_to login_path
         end
     end 
 
@@ -18,8 +18,8 @@ class UserFactionsController < ApplicationController
 
     def new
         if logged_in?
-        @user_faction = UserFaction.new
-        @factions = Faction.all.map { |x| x.name}
+        @user_user_faction = UserFaction.new
+        @user_factions = Faction.all.map { |x| x.name}
         else
             not_logged_in
             redirect_to login_user_path
@@ -30,21 +30,21 @@ class UserFactionsController < ApplicationController
         if logged_in?
             if UserFaction.find_by(army_name: params[:user_faction][:army_name])
                 army_name_taken
-                redirect_to new_user_faction_path
+                redirect_to new_user_user_faction_path
             else
 
                 user_faction = UserFaction.new(army_name: params[:user_faction][:army_name], user_id: session[:user_id], faction_id: Faction.find_by( name: params[:user_faction][:faction_id]).id)
 
-                if user_faction.save
-                    redirect_to user_faction_path(user_faction)
+                if user_faction.save          
+                    redirect_to user_user_faction_path(user_faction.user_id, user_faction.id)
                 else 
                     save_issue
-                    redirect_to new_user_faction_path
+                    redirect_to new_user_user_faction_path
                 end
             end
         else
             not_logged_in
-            redirect_to login_user_path
+            redirect_to login_path
         end
     end
 

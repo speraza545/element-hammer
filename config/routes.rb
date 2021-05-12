@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
-  resources :users, only: [:show, :create, :edit, :update, :destroy]
+  resources :users, only: [:show, :create, :edit, :update, :destroy, :new] do 
+    resources :user_factions 
+  end
   resources :factions, only: [:show, :index]
-  resources :user_factions
   get '/login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get "/signup", to: 'users#new'

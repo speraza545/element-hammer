@@ -4,7 +4,7 @@
         army name: <%= army.army_name %></br>
         faction name:<%= army.faction.name %></br>
         user:<%= army.user.name %></br>
-        <%= link_to "More Info", user_faction_path(army) %>
+        <%= link_to "More Info", faction_path(army.faction_id) %>
     </div>
     </br>
 <% end %>

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 has_secure_password
-has_many :user_factions
+has_many :user_factions, dependent: :destroy
 has_many :factions, through: :user_factions
 validates :email, presence: true, uniqueness: true
 

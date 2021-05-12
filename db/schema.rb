@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_05_08_200122) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "User3441"
     t.string "email"
     t.string "password_digest"
     t.integer "code"
