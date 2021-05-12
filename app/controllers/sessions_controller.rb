@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
             if admin?
                 redirect_to admin_factions_path
             else
-                redirect_to user_path(user.id)
+                redirect_to user_user_factions_path(user.id)
             end
         else
             redirect_to '/login', notice: "Incorrect Username or Password"
