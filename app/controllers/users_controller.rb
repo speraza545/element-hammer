@@ -38,7 +38,7 @@ class UsersController < ApplicationController
                 user = User.new(user_params)
                 if user.save
                     session[:user_id] = user.id
-                    redirect_to user_path(user)
+                    redirect_to user_user_factions_path(user.id)
                 else
                     save_issue
                     redirect_to new_user_path
