@@ -9,6 +9,7 @@
             faction name:<%= army.faction.name %></br>
             user:<%= army.user.name %></br>
             <%= link_to "More Info", faction_path(army.faction_id) %>
+            <%= link_to "edit", edit_user_user_faction_path(current_user.id, army.id)%>
         </div>
         </br>
     <% end %>

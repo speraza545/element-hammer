@@ -50,7 +50,8 @@ class UserFactionsController < ApplicationController
 
     def edit
         if logged_in? && current_user.id === UserFaction.find(params[:id]).user_id || admin?
-            @user_faction = UserFaction.find(params[:id])
+            @user_user_faction = UserFaction.find(params[:id])
+            @faction_id = @user_user_faction.faction.name
         else 
             not_logged_in
             redirect_to login_user_path
@@ -58,13 +59,14 @@ class UserFactionsController < ApplicationController
     end 
 
     def update
+
         if logged_in? && current_user.id === UserFaction.find(params[:id]).user_id || admin?
-            fuser_faction = UserFaction.find(params[:id])
-            fuser_faction.update(params[:user_faction_params])
-            redirect_to user_faction_path(user_faction)
+            user_faction = UserFaction.find(params[:id])
+            user_faction.update(army_name: params[:user_faction][:army_name])
+            redirect_to user_user_faction_path(user_faction.id)
         else 
             not_logged_in
-            redirect_to login_user_path
+            redirect_to login_path
         end
     end
 

@@ -1,1 +1,12 @@
 <h1>edit</h1>
+
+<%= save_issue_output %>
+<%= army_name_taken_output %>
+<%= error_with_omniauth_output %>
+<%= form_for @user_user_faction, :url => "/users/#{current_user.id}/user_factions/#{@user_user_faction.id}" do |f| %>
+    <%= f.text_field :army_name, placeholder: "Army Name", class: "form_field", :required => true %>
+
+    <%= f.text_field :faction_id, :readonly => true, :required => true %>
+
+    <%= f.submit class: "btn btn-primary" %>
+<% end %>
