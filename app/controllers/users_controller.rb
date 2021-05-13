@@ -56,8 +56,8 @@ class UsersController < ApplicationController
 
     def update
         if logged_in? && current_user.id === User.find(params[:id]).id || admin?
-
-            if User.find_by(email: params[:user][:email]) && User.find_by(email: params[:user][:email]).id != current_user.id
+            user = User.find_by(email: params[:user][:email])
+            if user && user.id != current_user.id
                 email_taken
                 redirect_to edit_user_path
             else

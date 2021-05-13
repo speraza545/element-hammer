@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < ApplicationController 
     def show
         if logged_in? && current_user.id === User.find(params[:id]).id || admin? 
             @user = User.find(params[:id])
@@ -6,7 +6,11 @@ class Admin::UsersController < ApplicationController
             not_admin
             redirect_to admin_signup_path
         end
-    end 
+    end
+
+    def index
+        @users = User.all
+    end
 
     def new 
         @user = User.new
@@ -22,20 +26,32 @@ class Admin::UsersController < ApplicationController
     end 
 
     def update
+
         if logged_in? && current_user.id === User.find(params[:id]).id || admin?
-            user = User.find(params[:id])
-            user.update(user_params)
-            redirect_to user_path(user)
+            user = User.find_by(email: params[:user][:email])
+            if user && user.id != User.find(params[:id]).id
+                email_taken
+                redirect_to edit_admin_user_path
+            else
+                user = User.find(params[:id])
+                user.update(user_params)
+                redirect_to admin_user_path(user)
+            end
+
         else
-            not_admin
-            redirect_to admin_signup_path
+            redirect_to login_path
         end
     end
 
     def destroy
         if logged_in? && current_user.id === User.find(params[:id]).id || admin?
+            user_factions = UserFaction.where(user_id = params[:id])
+            user_factions.each do |user_faction|
+                user_faction.delete
+            end
             user = User.find(params[:id])
-            user.destroy
+            user.delete
+            redirect_to admin_users_path
         else
             not_admin
             redirect_to admin_signup_path

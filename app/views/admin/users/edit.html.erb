@@ -1,1 +1,11 @@
-<h1>admin edit</h1>
+<h1>admin edit user</h1>
+<%= email_taken_output %>
+<%= save_issue_output %>
+<%= error_with_omniauth_output %>
+<%= form_for [:admin, @user] do |f|%>
+    <%= f.text_field :name, placeholder: "Name", class: "form_field" %>
+
+    <%= f.email_field :email, placeholder: "Email", class: "form_field", :required => true %>
+
+    <%= f.submit class: "btn btn-primary" %>
+<% end %>
