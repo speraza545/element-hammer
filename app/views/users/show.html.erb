@@ -1,11 +1,9 @@
-<h1>show</h1>
-
-<%= @user.name %>
-<%= @user.email %>
-    <%= @user.user_factions.each do |army| %>
-        <div class = "army_wrapper">
-            <%= army.faction.name %></br>
-            <%= army.army_name %></br>
-        </div>
-        </br>
-    <% end %>
+<div class = "wrapper">
+<div class = "form_wrapper">
+<h1>User</h1>
+<label>Name:</label></br>
+<h2><%= @user.name %></h2></br>
+<label>Email:</label></br>
+<h2><%= @user.email %></h2>
+</div>
+</div>
