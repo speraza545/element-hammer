@@ -1,12 +1,17 @@
-<h1>edit user</h1>
+<div class = "wrapper">
+<div class = "form_wrapper">
+<h1>Account Info:</h1>
 <%= email_taken_output %>
 <%= save_issue_output %>
 <%= error_with_omniauth_output %>
 <%= form_for @user do |f|%>
-    <%= f.text_field :name, placeholder: "Name", class: "form_field" %>
-
-    <%= f.email_field :email, placeholder: "Email", class: "form_field", :required => true %>
+     <label> Name: </label></br>
+    <%= f.text_field :name, placeholder: "Name", class: "form_field" %></br>
+    <label>Email:</label></br>
+    <%= f.email_field :email, placeholder: "Email", class: "form_field", :required => true %></br>
 
     <%= f.submit class: "btn btn-primary" %>
 <% end %>
+</div>
+</div>
 
