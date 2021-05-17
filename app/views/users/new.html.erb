@@ -1,16 +1,20 @@
+<div class="wrapper">
+<div class = "form_wrapper">
 <h1>Sign up</h1>
-
 <%= email_taken_output %>
 <%= save_issue_output %>
 <%= error_with_omniauth_output %>
 <%= form_for @user do |f|%>
-    <%= f.text_field :name, placeholder: "Name", class: "form_field" %>
-
-    <%= f.email_field :email, placeholder: "Email", class: "form_field", :required => true %>
-
-    <%= f.password_field :password, placeholder: "Password", class: "form_field", :required => true %>
-
-    <%= f.submit class: "btn btn-primary" %>
+    <label>User Name:</label></br>
+    <%= f.text_field :name, placeholder: "Name", class: "form_field" %></br></br>
+    <label>Email:</label></br>
+    <%= f.email_field :email, placeholder: "Email", class: "form_field", :required => true %></br></br>
+    <label>Password:</label></br>
+    <%= f.password_field :password, placeholder: "Password", class: "form_field", :required => true %></br></br>
+    </br>
+    <%= f.submit class: "button"%>
 <% end %>
 <p> or </p>
-<%= button_to "Sign Up with Google", "/auth/google_oauth2" %>
+<%= button_to "Sign Up with Google", "/auth/google_oauth2", {class: 'button'} %>
+</div>
+</div>

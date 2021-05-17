@@ -1,20 +1,12 @@
-<h1>index</h1>
 <div class = "wrapper">
-    <div class = "main_content">
-        <p>stuffs here i swear</p>
-    <div>
-    <%= @factions.each do |faction|%>
+<h1>Factions:</h1>
+    <% @factions.each do |faction|%>
         <div class = "faction_wrapper">
-            <%= faction.name %>
-            <div class="image">
-                <p>im an image</p>
-            </div>
-            <div class = "button">
-                <%= link_to "Info", faction_path(faction.id) %>
-            </div>
-            <div class = "button">
-            <%= link_to "Build", new_user_user_faction_path(session[:user_id]) %>
-            </div>
+            <h2><%= faction.name.capitalize %></h2>
+                <%= faction_logo(faction) %>
+                <a href="/factions/<%= faction.id %>" class = "button">Info</a>
+            </br>
+            <a href="/users/<%= session[:user_id] %>/user_factions/new" class = 'button'>Build Army</a>
         </div>
     <% end %>
 </div>

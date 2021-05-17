@@ -1,13 +1,13 @@
-<h1>show</h1>
+
 <div class = "wrapper">
-    <div class = "sub_wrapper">
-        <h1 class="faction_title"><%= @faction.name %></h1>
+    <div class = "form_wrapper">
+        <h2> Faction Name:</h2>
+        <h1 class="faction_title"><%= @faction.name.capitalize %></h1></br>
+        <%= faction_logo(@faction) %></br>
+        <h2>Faction Buff Type:</h2>
+        <h1><%= @faction.buff_type.capitalize %></h1></br>
+        <h2> Buff: </h2>
+        <h1><%= @faction.buff %></h1>
+        <p>Lore. so much lore that it makes you question if you will even reaaaallllly read this</p>
     </div>
-    <div class = "sub_wrapper">
-        <p><%= @faction.buff_type %></p>
-        <p><%= @faction.buff %></p>
-    </div>
-    <div class = "main_content">
-        <p>stuffs here i swear</p>
-    <div>
 </div>

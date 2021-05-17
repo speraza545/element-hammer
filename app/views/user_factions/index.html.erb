@@ -1,16 +1,31 @@
-<h1>user faction index</h1>
+<div class = "wrapper">
+<h1>Your Armies:</h1>
+<a href="/users/<%= session[:user_id] %>/user_factions/new" class = "button">New Army</a>
+
 <% if @user_factions === nil || @user_factions.empty? %>
-    <%= link_to "Learn About Factions", factions_path %>
-    <%= link_to "Build an Army", new_user_user_faction_path(session[:user_id]) %>
+    <a href="/factions" class = "button">Factions</a>
+    <p>no armies found!</p>
 <% else %>
-    <%= @user_factions.each do |army| %>
-        <div>
-            army name: <%= army.army_name %></br>
-            faction name:<%= army.faction.name %></br>
-            user:<%= army.user.name %></br>
-            <%= link_to "More Info", faction_path(army.faction_id) %>
-            <%= link_to "edit", edit_user_user_faction_path(current_user.id, army.id)%>
+    <% @user_factions.each do |army| %>
+        <div class = "sub_wrapper">
+            <h3>Army Name:</h3>
+            <h4><%= army.army_name %></h4>
+            <h3>Faction Name:</br></h3>
+            <h4><%= army.faction.name %></h4>
+            <h3>User:</br></h3>
+            <h4><%= army.user.name %></h4></br>
+
+                <a href="/users/<%= session[:user_id] %>/user_factions/<%= army.id %>" class = "button">View</a></br>
+
+                <a href="/users/<%= session[:user_id] %>/user_factions/<%= army.id %>/edit" class = "button">Edit</a>
+
+                <form method="post" action="/users/<%= session[:user_id] %>/user_factions/<%= army.id %>">
+                <input type="hidden" name="_method" value="delete"></br>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                <input type="submit" name="submit" value="Delete" class = "button">
+            </form>
+            </br>
         </div>
-        </br>
     <% end %>
 <% end %>
+</div>

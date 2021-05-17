@@ -73,6 +73,10 @@ class UsersController < ApplicationController
 
     def destroy
         if (logged_in? && current_user.id === session[:user_id]) || admin?
+            user_factions = UserFaction.where(user_id: session[:user_id])
+            user_factions.each do |army|
+                army.delete
+            end
             user = User.find(params[:id])
             user.destroy
         end

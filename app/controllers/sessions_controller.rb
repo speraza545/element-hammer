@@ -19,19 +19,22 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = User.find_or_create_by(email: params[:session][:email])
-        user.password = params[:session][:password]
-        user.save
-        if user && user.authenticate(params[:session][:password])
-            session[:user_id] = user.id
-            session[:code] = user.code if user.code
-            if admin?
-                redirect_to admin_factions_path
+        user = User.find_by(email: params[:session][:email])
+        if user
+            if user.authenticate(params[:session][:password])
+                session[:user_id] = user.id
+                session[:code] = user.code if user.code
+                if admin?
+                    redirect_to admin_factions_path
+                else
+                    redirect_to user_user_factions_path(user.id)
+                end
             else
-                redirect_to user_user_factions_path(user.id)
+                redirect_to '/login', notice: "Incorrect Username or Password"
             end
-        else
-            redirect_to '/login', notice: "Incorrect Username or Password"
+        else   
+            email_taken
+            redirect_to signup_path
         end
     end
 

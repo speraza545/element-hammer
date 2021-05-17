@@ -1,21 +1,20 @@
+<div class = "wrapper">
 <h1>admin index</h1>
-<%= @users.each do |user|%>
-    <div class = "faction_wrapper">
-    <%= User.is_admin?(user.code) ? "admin" : "user" %></br>
-    <%= user.name %></br>
-    <%= user.email %></br>
+<% @users.each do |user|%>
+    <div class = "sub_wrapper">
+    <h2><%= User.is_admin?(user.code) ? "Admin:" : "User:" %></br></h2>
+    <h3><%= user.name %></h3>
+    <h2>Email: </h2>
+    <h3><%= user.email %></h3>
     <% if !User.is_admin?(user.code) %>
-        <div class = "button">
-            <%= link_to "Edit", edit_admin_user_path(user.id) %>
-        </div>
-        <div class = "button">
+        <a href="/admin/users/<%= user.id %>/edit" class = "button">Edit</a></br>
         <form method="post" action="/admin/users/<%= user.id %>">
             <input type="hidden" name="_method" value="delete">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            <input type="submit" name="submit" value="Delete">
+            <input type="submit" name="submit" value="Delete" class="button">
         </form>
-        </div>
     <% end %>
-    </div>
     </br>
+    </div>
 <% end %>
+</div>

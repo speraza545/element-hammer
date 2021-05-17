@@ -1,14 +1,19 @@
-<h1>login </h1>
-
-<% flash.each do |type, msg| %>
-    <div class="alert alert-info">
-      <%= msg %>
-    </div>
-  <% end %>
-<%= form_for(:session, url: login_path) do |f| %>
-    <%= f.email_field :email, :placeholder => "Email", :required => true %>
-    <%= f.password_field :password, :placeholder => "Password", :required => true %>
-    <%= f.submit "Log in", class: "btn-submit" %>
-<% end %>
-<p> or </p>
-<%= button_to "Log in with Google", "/auth/google_oauth2" %>
+<div class="wrapper">
+  <div class="form_wrapper">
+    <h1>Login </h1>
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-info">
+          <%= msg %>
+        </div>
+      <% end %>
+    <%= form_for(:session, url: login_path) do |f| %>
+        <p class = "form_header">Email:</p>
+        <%= f.email_field :email, :placeholder => "Email", :required => true %>
+        <p class = "form_header">Password:</p>
+        <%= f.password_field :password, :placeholder => "Password", :required => true %></br></br>
+        <%= f.submit "Log in", class: "button" %>
+    <% end %>
+    <p> or </p>
+    <%= button_to "Log in with Google", "/auth/google_oauth2", {class: 'button'}%>
+</div>
+</div>

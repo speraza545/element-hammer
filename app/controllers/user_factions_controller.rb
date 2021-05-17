@@ -72,8 +72,9 @@ class UserFactionsController < ApplicationController
 
     def destroy
         if logged_in? && current_user.id === UserFaction.find(params[:id]).user_id || admin?
-            user_faction = Faction.find(params[:id])
-            user_faction.destroy
+            user_faction = UserFaction.find_by(id: params[:id])
+            user_faction.delete
+            redirect_to user_user_factions_path
         else 
             not_logged_in
             redirect_to login_user_path

@@ -1,7 +1,14 @@
-<h1>admin faction show</h1>
-
-<%= @faction.name %>
-<%= @faction.buff_type %>
-<%= @faction.buff %>
-<%= @faction.info %>
+<div class = "wrapper">
+<div class = "form_wrapper">
+<h1>Faction Info:</h1>
+<h2>Name:</h2>
+<h3><%= @faction.name %></h3>
+<h2>Buff Type:</h2>
+<h3><%= @faction.buff_type %></h3>
+<h2>Buff:</h2>
+<h3><%= @faction.buff %></h3>
+<h2>Faction Lore:</h2>
+<h3><%= @faction.info %></h3>
 <%= link_to "Edit Faction", edit_admin_faction_path(@faction)%>
+</div>
+</div>

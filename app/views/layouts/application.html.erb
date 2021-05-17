@@ -2,13 +2,20 @@
 <html>
   <head>
     <title>ElementHammer</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!-- <link rel="stylesheet" type="text/css" href="application_layouts.css"/> -->
+    <%= stylesheet_link_tag 'application.css' %>
   </head>
 
   <body>
+  <div class ="nav_logo">
+    <div class = "main_logo">
+      <%= image_tag("elementhammer-big.png")%>
+    </div>
+  
     <ul class="navbar">
       <% if admin? %>
         <li class="navbar-li"><a href="/">Home</a></li>
@@ -27,6 +34,7 @@
         <li class="navbar-li"><a href="/signup">Sign up</a></li>
       <% end %>
     </ul>
+  </div>
 
 
     <%= yield %>

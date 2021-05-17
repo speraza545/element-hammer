@@ -1,16 +1,21 @@
+<div class = "wrapper">
+<div class = "form_wrapper">
 <h1>admin new</h1>
 
 <h1>Sign up</h1>
-<%= email_taken_output %>
 <%= not_admin_output %>
 <%= form_for @user do |f|%>
-    <%= f.text_field :name, placeholder: "Name", class: "form_field" %>
+    <label>Name:</label></br>
+    <%= f.text_field :name, placeholder: "Name", class: "form_field" %></br></br>
+    <label>Email:</label></br>
+    <%= email_taken_output %>
+    <%= f.text_field :email, placeholder: "Email", class: "form_field" %></br></br>
+    <label>Password:</label></br>
+    <%= f.text_field :password, placeholder: "Password", class: "form_field" %></br></br>
+    <label>Admin Code:</label></br>
+    <%= f.number_field :code, placeholder: "Code", class: "form_field" %></br></br>
 
-    <%= f.text_field :email, placeholder: "Email", class: "form_field" %>
-
-    <%= f.text_field :password, placeholder: "Password", class: "form_field" %>
-
-    <%= f.number_field :code, placeholder: "Code", class: "form_field" %>
-
-    <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit class: "button" %>
 <% end %>
+</div>
+</div>

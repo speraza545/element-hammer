@@ -1,12 +1,16 @@
-<h1>edit</h1>
-
+<div class = "wrapper">
+<div class = "form_wrapper">
+<h1>Edit <%= @user_user_faction.army_name%></h1>
 <%= save_issue_output %>
 <%= army_name_taken_output %>
 <%= error_with_omniauth_output %>
 <%= form_for @user_user_faction, :url => "/users/#{current_user.id}/user_factions/#{@user_user_faction.id}" do |f| %>
-    <%= f.text_field :army_name, placeholder: "Army Name", class: "form_field", :required => true %>
-
-    <%= f.text_field :faction_id, :readonly => true, :required => true %>
+    <label>Army Name:</label></br>
+    <%= f.text_field :army_name, placeholder: "Army Name", class: "form_field", :required => true %></br></br>
+    <label>Faction Id (cannot change):</label></br>
+    <%= f.text_field :faction_id, :readonly => true, :required => true %></br></br>
 
     <%= f.submit class: "btn btn-primary" %>
 <% end %>
+</div>
+</div>
