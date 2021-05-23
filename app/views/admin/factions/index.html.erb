@@ -1,8 +1,7 @@
 <div class = "wrapper">
-<h1>admin faction index</h1>
-<%= link_to "Create Faction", new_admin_faction_path %>
+<h1>Faction Index</h1>
+<%= link_to "Create Faction", new_admin_faction_path, {class: 'button'} %>
     <div class = "main_content">
-        <p>stuffs here i swear</p>
     <div>
     <% @factions.each do |faction|%>
         <div class = "faction_wrapper">

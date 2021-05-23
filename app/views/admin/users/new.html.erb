@@ -1,8 +1,7 @@
 <div class = "wrapper">
 <div class = "form_wrapper">
-<h1>admin new</h1>
 
-<h1>Sign up</h1>
+<h1>Admin Sign Up</h1>
 <%= not_admin_output %>
 <%= form_for @user do |f|%>
     <label>Name:</label></br>
@@ -11,7 +10,7 @@
     <%= email_taken_output %>
     <%= f.text_field :email, placeholder: "Email", class: "form_field" %></br></br>
     <label>Password:</label></br>
-    <%= f.text_field :password, placeholder: "Password", class: "form_field" %></br></br>
+    <%= f.password_field :password, placeholder: "Password", class: "form_field" %></br></br>
     <label>Admin Code:</label></br>
     <%= f.number_field :code, placeholder: "Code", class: "form_field" %></br></br>
 
