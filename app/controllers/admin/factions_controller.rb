@@ -69,6 +69,7 @@ class Admin::FactionsController < ApplicationController
     def destroy
         faction = Faction.find(params[:id])
         faction.destroy
+        redirect_to admin_factions_path
     end
 
     private
